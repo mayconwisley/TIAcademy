@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    main {
+        display: flex;
+        width: 80%;
+        height: auto;
+        margin: 0 auto;
+        background-color: tomato;
+    }
+
+    .filho {
+        width: 50%;
+        height: auto;
+        background-color: teal;
+    }
+
+    @media screen and (max-width:700px) {
+        main {
+            flex-direction: column;
+        }
+
+        .filho {
+            width: 100%;
+        }
+    }
+</style>
+
+<body>
+
+    <main>
+        <div class="filho">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum, eaque saepe perspiciatis velit, ipsum
+                eum, nobis voluptate voluptatum nam fuga veritatis modi. Repellendus eaque distinctio rem dignissimos
+                iusto tempora facere.</p>
+        </div>
+        <div class="filho">
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Blanditiis qui, ipsam aperiam culpa mollitia
+                nesciunt eveniet doloremque reprehenderit, est facere, totam excepturi necessitatibus consectetur ullam
+                enim laboriosam quis neque nisi?</p>
+        </div>
+    </main>
+
+</body>
+
+</html>

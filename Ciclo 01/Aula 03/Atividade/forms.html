@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forms</title>
+</head>
+<style>
+    form {
+        background-color: red;
+        border: 1px solid black;
+        width: 300px;
+        height: auto;
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .txt {
+        margin-top: 5px;
+        margin-bottom: 5px;
+        outline: none;
+
+    }
+    .btn{
+        background-color:  blue;
+        border: 1px solid white;
+        }
+</style>
+
+<body>
+    <form name="frmCadastro" action="" method="GET">
+        <input class="txt" type="text" name="" />
+        <input class="txt" type="password" name="">
+        <select name="fruta">
+            <option value="">Selecione</option>
+            <option value="">Banana</option>
+            <option value="">Laranja</option>
+            <option value="">Uva</option>
+            <option value="">Pera</option>
+        </select>
+        <input type="checkbox" name="">
+        <input type="checkbox" name="">
+        <input type="radio" name="teste">
+        <input type="radio" name="teste">
+        <input type="radio" name="testes">
+        <input type="radio" name="testes">
+        <input class="btn" type="submit" name="">
+    </form>
+</body>
+
+</html>

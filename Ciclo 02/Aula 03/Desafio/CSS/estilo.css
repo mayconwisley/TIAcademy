@@ -1,0 +1,46 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.conteudo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 500px;
+    height: auto;
+    margin: 30vh auto;
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color: #EEEEEE;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.formulario {
+    margin: 10px auto;
+    display: flex;
+    flex-direction: column;
+}
+.textBox {
+    
+    width: 150px;
+    height: 25px;
+    float: right;
+    margin: 5px;
+}
+
+.btn-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn {
+    width: 140px;
+    height: 30px;
+    border-radius: 5px;
+    background-color: #E64A19;
+    color: #FAFAFA;
+}
+
