@@ -32,42 +32,4 @@ window.onload = function () {
             console.log(li);
         });
     });
-
-    const cestaCliente1 = document.querySelectorAll("ul#cestaDoCliente > li.itemProduto");
-    const list = document.querySelector("ul#cestaDoCliente");
-
-    cestaCliente1.forEach((item) => {
-        item.addEventListener('click', (itemCesta) => {
-            var idx = armazenaItens.indexOf(itemCesta.target.textContent);
-
-            if (idx > -1) {
-
-                armazenaItens.splice(idx, 1);
-                cestaCliente.removeChild(list.childNodes[idx]);
-
-                totalPedido -= Number(item.dataset.preco);
-                //     totalPedido -= Number(item.dataset.preco);
-                //     mostraTotalCompta.value = totalPedido.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-            }
-
-
-            // li = document.createElement("li");
-
-            // if (armazenaItens.indexOf(item.textContent) == -1) {
-            //     armazenaItens.push(item.textContent);
-            //     cestaCliente.appendChild(li).textContent = item.textContent;
-            //     totalPedido += Number(item.dataset.preco);
-            //     mostraTotalCompta.value = totalPedido.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-
-            // } else {
-            //     alert(`Este item ${item.textContent} já esta na sua cesta!`);
-            // }
-            console.log(`Indice: ${idx}`);
-            console.log(armazenaItens);
-            console.log(itemCesta.target.textContent);
-            console.log(item.dataset.preco);
-
-        });
-    });
-
 };
