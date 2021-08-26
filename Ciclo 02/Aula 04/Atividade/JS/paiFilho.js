@@ -6,13 +6,21 @@ window.onload = function () {
         });
     })
 
-const btn = document.querySelector("#btn");
-const outroPai = document.querySelector("#outroPai");
+    const btn = document.querySelector("#btn");
+    const outroPai = document.querySelector("#outroPai");
+    var i = 0;
+    btn.addEventListener('click', () => {
+        li = document.createElement("li");
+        outroPai.appendChild(li).textContent = "Elemento Filho " + i;
+        li.setAttibute("class", "itemDaLista");
+        i++;
+    });
 
-btn.addEventListener('click',()=>{
-    li = document.createElement("li");
-    outroPai.appendChild(li).textContent = "Elemento Filho"
-});
+    const paiDaLista = document.querySelector("#outroPai");
+    paiDaLista.forEach(listaDeFilhas => {
+        listaDeFilhas.addEventListener('click', (filha) => {
 
+        });
+    });
 
 }
