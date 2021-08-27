@@ -11,12 +11,12 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Pedido.belongsTo(Cliente);
-      Pedido.belongsTo(Servico);
+      Pedido.belongsTo(models.Cliente);
+      Pedido.belongsTo(models.Servico);
     }
   };
   Pedido.init({
-    idClinte: DataTypes.INTEGER,
+    idCliente: DataTypes.INTEGER,
     idServico: DataTypes.INTEGER,
     valor: DataTypes.FLOAT(6, 2),
     data: DataTypes.DATE
