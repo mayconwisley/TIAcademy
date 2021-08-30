@@ -69,6 +69,109 @@ app.post('/servicos', async (req, res) => {
     res.send('Serviço foi inserido');
 });
 
+/* app.get('/listaservicos', async (req, res) => {
+    await servico.findAll({
+        raw: true
+    }).then(function (servicos) {
+        res.json({
+            servicos
+        })
+    });
+});
+ */
+app.get('/listaservicos', async (req, res) => {
+    await servico.findAll({
+        order: [['nome', 'DESC']]
+    }).then((servicos) => {
+        res.json({
+            servicos
+        })
+    });
+});
+//////////////////////////////////////////////////////////////////////////////////////
+
+//Lista Cliente - OK
+app.get('/listaclientes', async (req, res) => {
+    await cliente.findAll({
+        raw: true
+    }).then((cliente) => {
+        res.json({
+            cliente
+        })
+    });
+});
+
+//Lista Cliente Antigo ok
+app.get('/listaclientesAntigo', async (req, res) => {
+    await cliente.findAll({
+        order : [['createdAt','ASC']]
+    }).then((cliente) => {
+        res.json({
+            cliente
+        })
+    });
+});
+
+//Total de cliente ok
+app.get('/totalcliente', async (req, res) => {
+    await cliente.count('id').then((cliente) => {
+        res.json(cliente)
+    });
+});
+
+
+//Todos Pedidos ok - ok
+app.get('/todospedidos', async (req, res) => {
+    await pedido.findAll({
+        raw : true
+    }).then((pedido) => {
+        res.json({
+            pedido
+        })
+    });
+});
+
+//Todos Pedidos Crescente - Ok
+app.get('/listapedidosCrescente', async (req, res) => {
+    await pedido.findAll({
+        order : [['id','ASC']]
+    }).then((pedido) => {
+        res.json({
+            pedido
+        })
+    });
+});
+/**/
+//Total Pedidos - Ok
+app.get('/totalpedidos', async (req, res) => {
+    await pedido.count('id').then((pedido) => {
+        res.json(pedido)
+    });
+});
+
+////////////////////////////////////////////////////////////////////////
+app.get('/ofertas', async (req, res) => {
+    await servico.count('id').then((servicos) => {
+        res.json(servicos)
+    });
+});
+
+app.get('/servico/:id', async (req, res) => {
+    await servico.findByPk(req.params.id)
+        .then((servicos) => {
+            return res.json({
+                error: false,
+                servicos
+            })
+        }).catch((erro) => {
+            return res.status(400).json({
+                error: true,
+                message: "Codigo não cadastrado"
+            });
+        });
+});
+
+
 let port = process.env.PORT || 3000;
 
 app.listen(port, (req, res) => {
