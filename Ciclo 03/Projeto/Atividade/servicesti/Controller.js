@@ -47,6 +47,21 @@ app.get('/cliente', async (req, res) => {
     res.send('Serviço foi inserido');
 });
  */
+
+app.post('/pedido', async (req, res) => {
+    let create = await pedido.create(
+        req.body
+    );
+    res.send('Pedido foi inserido');
+});
+
+app.post('/cliente', async (req, res) => {
+    let create = await cliente.create(
+        req.body
+    );
+    res.send('Cliente foi inserido');
+});
+
 app.post('/servicos', async (req, res) => {
     let create = await servico.create(
         req.body
