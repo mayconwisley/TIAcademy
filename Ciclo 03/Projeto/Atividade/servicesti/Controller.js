@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+const { Op } = require('sequelize');
 
 const models = require('./models');
 
@@ -175,13 +176,189 @@ app.get('/servico/:id', async (req, res) => {
 
 //Total Gasto por Cliente
 app.get('/pedido/:id', async (req, res) => {
-    await pedido.sum('valor', {where: {ClienteId: req.params.id}})
-        .then((pedido) => {
-            return res.json({
-                pedido
-            })
+    await pedido.sum('valor', {
+        where: {
+            ClienteId: req.params.id
+        }
+    }).then((pedido) => {
+        return res.json({
+            pedido
+        })
+    });
+});
+
+//Total Gasto por Cliente usando Operador sequelize
+app.get('/pedidoop/:id', async (req, res) => {
+    await pedido.sum('valor', {
+        where: {
+            ClienteId: {
+                [Op.eq]: req.params.id
+            }
+        }
+    }).then((pedido) => {
+        return res.json({
+            pedido
+        })
+    });
+});
+
+//Atualizar dados no banco
+//Get
+app.get('/atualizaservico/:id', async (req, res) => {
+    await servico.findByPk(req.params.id)
+        .then((servico) => {
+            servico.nome = req.body.nome; //"HTML/CSS/JS";
+            servico.descricao = req.body.descricao; //"Criação de página estática e com JS para tornar a pagina mais dinamica";
+            servico.save();
+            return res.json({ servico });
+
         });
 });
+
+//Put
+app.put('/editarservico', (req, res) => {
+    servico.update(req.body, {
+        where: {
+            id: req.body.id
+        }
+    }).then(() => {
+        return res.json({
+            error: false,
+            message: "Servico Alterado com Sucesso"
+        });
+    }).catch(() => {
+        return res.status(400).json(
+            {
+                error: true,
+                message: "Erro na alteração do serviço"
+
+            });
+    });
+});
+
+app.get('/servicopedidos/:id', async (req, res) => {
+    await servico.findByPk(req.params.id, {
+        include: [{ all: true }]
+    }).then((servico) => {
+        return res.json({ servico });
+    });
+});
+
+//put edição do pedido através do serviço
+
+app.put('/editarpedido', (req, res) => {
+    pedido.update(req.body, {
+        where: {
+            ServicoId: req.body.ServicoId
+        }
+    }).then(() => {
+        return res.json({
+            error: false,
+            message: "Pedido Atualizado"
+        })
+    }).catch((erro) => {
+        return res.status(400).json({
+            error: false,
+            message: "Erro ao atualizar"
+        })
+    })
+});
+/////////////////////////Exercicio 01 ////////////////////////////////////////
+//Busca Cliente
+app.get('/buscacliente', async (req, res) => {
+    await pedido.findAll({
+        where: {
+            ClienteId: req.body.ClienteId
+        }
+    }).then((pedido) => {
+        return res.json({ pedido })
+    }).catch((erro) => {
+        return res.status(400).json({
+            error: false,
+            message: "Erro ao atualizar"
+        })
+    })
+});
+//////////////////////////////////////////////////////////////////////////
+//////////////////Exercicio 02 /////////////////////////////////////////////////
+
+//Consulta Cliente
+app.get('/consultaCliente/:id', async (req, res) => {
+    await cliente.findByPk(req.params.id).then((cliente) => {
+        return res.json({ cliente });
+    });
+});
+//Put Cliente
+app.put('/editarcliente', (req, res) => {
+    cliente.update(req.body, {
+        where: {
+            Id: req.body.id
+        }
+    }).then(() => {
+        return res.json({
+            error: false,
+            message: "Cliente Atualizado"
+        })
+    }).catch((erro) => {
+        return res.status(400).json({
+            error: false,
+            message: "Erro ao atualizar"
+        })
+    })
+});
+//////////////////////////////////////////////////////////////////
+///////////////////Exercicio 03 ///////////////////////
+
+//localhost:3000/todospedidos
+
+//Put Pedido
+app.put('/editarpedidoput', (req, res) => {
+    pedido.update(req.body, {
+        where: {
+            Id: req.body.id
+        }
+    }).then(() => {
+        return res.json({
+            error: false,
+            message: "Pedido Atualizado"
+        })
+    }).catch((erro) => {
+        return res.status(400).json({
+            error: false,
+            message: "Erro ao atualizar"
+        })
+    })
+});
+//////////////////////////////////////////////////////
+
+app.get('/excluircliente', (req, res) => {
+    cliente.destroy({
+        where: {
+            id: req.body.id
+        }
+    }).then(() => {
+        return req.json({ cliente });
+    })
+});
+
+app.delete('/apagarcliente/:id', (req, res) => {
+    cliente.destroy({
+        where: {
+            id: req.params.id
+        }
+    }).then(() => {
+        return res.json({
+            error: false,
+            message: "Cliente excluido"
+        });
+    }).catch((erro) => {
+        return res.status(400).json({
+            error: true,
+            message: "Erro ao excluir cliente"
+        });
+    });
+});
+
 
 let port = process.env.PORT || 3000;
 
