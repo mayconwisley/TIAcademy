@@ -79,6 +79,7 @@ app.post('/servicos', async (req, res) => {
     });
 });
  */
+//Lista Serviços
 app.get('/listaservicos', async (req, res) => {
     await servico.findAll({
         order: [['nome', 'DESC']]
@@ -104,7 +105,7 @@ app.get('/listaclientes', async (req, res) => {
 //Lista Cliente Antigo ok
 app.get('/listaclientesAntigo', async (req, res) => {
     await cliente.findAll({
-        order : [['createdAt','ASC']]
+        order: [['createdAt', 'ASC']]
     }).then((cliente) => {
         res.json({
             cliente
@@ -123,7 +124,7 @@ app.get('/totalcliente', async (req, res) => {
 //Todos Pedidos ok - ok
 app.get('/todospedidos', async (req, res) => {
     await pedido.findAll({
-        raw : true
+        raw: true
     }).then((pedido) => {
         res.json({
             pedido
@@ -134,7 +135,7 @@ app.get('/todospedidos', async (req, res) => {
 //Todos Pedidos Crescente - Ok
 app.get('/listapedidosCrescente', async (req, res) => {
     await pedido.findAll({
-        order : [['id','ASC']]
+        order: [['id', 'ASC']]
     }).then((pedido) => {
         res.json({
             pedido
@@ -156,6 +157,7 @@ app.get('/ofertas', async (req, res) => {
     });
 });
 
+//Serviços Id
 app.get('/servico/:id', async (req, res) => {
     await servico.findByPk(req.params.id)
         .then((servicos) => {
@@ -171,6 +173,15 @@ app.get('/servico/:id', async (req, res) => {
         });
 });
 
+//Total Gasto por Cliente
+app.get('/pedido/:id', async (req, res) => {
+    await pedido.sum('valor', {where: {ClienteId: req.params.id}})
+        .then((pedido) => {
+            return res.json({
+                pedido
+            })
+        });
+});
 
 let port = process.env.PORT || 3000;
 
