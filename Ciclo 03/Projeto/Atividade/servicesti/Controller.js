@@ -49,6 +49,12 @@ app.get('/cliente', async (req, res) => {
 });
  */
 
+/*
+    Desafio aula 02
+    Implemente o cadastro de pedidos
+
+ */
+//Cadastrando pedido com informações enviadas pelo body
 app.post('/pedido', async (req, res) => {
     let create = await pedido.create(
         req.body
@@ -56,6 +62,12 @@ app.post('/pedido', async (req, res) => {
     res.send('Pedido foi inserido');
 });
 
+/*
+    Desafio aula 02
+    Implemente o cadastro de clientes
+    
+ */
+//Cadastrando cliente com as informações enviadas pelo body
 app.post('/cliente', async (req, res) => {
     let create = await cliente.create(
         req.body
@@ -63,6 +75,7 @@ app.post('/cliente', async (req, res) => {
     res.send('Cliente foi inserido');
 });
 
+//Cadastrando serviço com as informações enviadas pelo body
 app.post('/servicos', async (req, res) => {
     let create = await servico.create(
         req.body
@@ -70,6 +83,7 @@ app.post('/servicos', async (req, res) => {
     res.send('Serviço foi inserido');
 });
 
+//Listando os Serviços de modo geral.
 /* app.get('/listaservicos', async (req, res) => {
     await servico.findAll({
         raw: true
@@ -80,7 +94,7 @@ app.post('/servicos', async (req, res) => {
     });
 });
  */
-//Lista Serviços
+//Lista Serviços por ordem de nomes
 app.get('/listaservicos', async (req, res) => {
     await servico.findAll({
         order: [['nome', 'DESC']]
@@ -143,7 +157,7 @@ app.get('/listapedidosCrescente', async (req, res) => {
         })
     });
 });
-/**/
+
 //Total Pedidos - Ok
 app.get('/totalpedidos', async (req, res) => {
     await pedido.count('id').then((pedido) => {
@@ -152,13 +166,14 @@ app.get('/totalpedidos', async (req, res) => {
 });
 
 ////////////////////////////////////////////////////////////////////////
-app.get('/ofertas', async (req, res) => {
+//Lista a quantidade de serviços
+app.get('/totalservicos', async (req, res) => {
     await servico.count('id').then((servicos) => {
         res.json(servicos)
     });
 });
 
-//Serviços Id
+//Listar por Serviços Id
 app.get('/servico/:id', async (req, res) => {
     await servico.findByPk(req.params.id)
         .then((servicos) => {
@@ -174,7 +189,11 @@ app.get('/servico/:id', async (req, res) => {
         });
 });
 
-//Total Gasto por Cliente
+/* 
+    Desafio Aula 03
+    Qual é o total que o cliente X gastou na ServicesTI
+*/
+//Total de pedido Gasto por Cliente
 app.get('/pedido/:id', async (req, res) => {
     await pedido.sum('valor', {
         where: {
@@ -187,7 +206,13 @@ app.get('/pedido/:id', async (req, res) => {
     });
 });
 
-//Total Gasto por Cliente usando Operador sequelize
+
+/* 
+    Desafio Aula 03
+    Qual é o total que o cliente X gastou na ServicesTI
+    Operador Sequelize
+*/
+//Total de pedido Gasto por Cliente usando Operador sequelize
 app.get('/pedidoop/:id', async (req, res) => {
     await pedido.sum('valor', {
         where: {
@@ -203,6 +228,7 @@ app.get('/pedidoop/:id', async (req, res) => {
 });
 
 //Atualizar dados no banco
+//Atualizar serviço pelo Id
 //Get
 app.get('/atualizaservico/:id', async (req, res) => {
     await servico.findByPk(req.params.id)
@@ -215,6 +241,7 @@ app.get('/atualizaservico/:id', async (req, res) => {
         });
 });
 
+//Atualizar serviço pelo Id
 //Put
 app.put('/editarservico', (req, res) => {
     servico.update(req.body, {
@@ -236,6 +263,7 @@ app.put('/editarservico', (req, res) => {
     });
 });
 
+//Listar todos os serviços por id os dados atrelado a ele
 app.get('/servicopedidos/:id', async (req, res) => {
     await servico.findByPk(req.params.id, {
         include: [{ all: true }]
@@ -245,7 +273,6 @@ app.get('/servicopedidos/:id', async (req, res) => {
 });
 
 //put edição do pedido através do serviço
-
 app.put('/editarpedido', (req, res) => {
     pedido.update(req.body, {
         where: {
@@ -265,7 +292,7 @@ app.put('/editarpedido', (req, res) => {
 });
 /////////////////////////Exercicio 01 ////////////////////////////////////////
 //Busca Cliente
-app.get('/buscacliente', async (req, res) => {
+app.get('/buscapedidoporcliente', async (req, res) => {
     await pedido.findAll({
         where: {
             ClienteId: req.body.ClienteId
@@ -283,7 +310,7 @@ app.get('/buscacliente', async (req, res) => {
 //////////////////Exercicio 02 /////////////////////////////////////////////////
 
 //Consulta Cliente
-app.get('/consultaCliente/:id', async (req, res) => {
+app.get('/consultaClienteId/:id', async (req, res) => {
     await cliente.findByPk(req.params.id).then((cliente) => {
         return res.json({ cliente });
     });
@@ -312,7 +339,7 @@ app.put('/editarcliente', (req, res) => {
 //localhost:3000/todospedidos
 
 //Put Pedido
-app.put('/editarpedidoput', (req, res) => {
+app.put('/atualizarpedido', (req, res) => {
     pedido.update(req.body, {
         where: {
             Id: req.body.id
@@ -341,7 +368,7 @@ app.get('/excluircliente', (req, res) => {
     })
 });
 
-app.delete('/apagarcliente/:id', (req, res) => {
+app.delete('/apagarclienteid/:id', (req, res) => {
     cliente.destroy({
         where: {
             id: req.params.id
@@ -363,7 +390,7 @@ app.delete('/apagarcliente/:id', (req, res) => {
 Desafio Aula 04
 Faça uma rota que liste todos os pedidos de um cliente
 */
-app.get('/pedidoporcliente/:id', async (req, res) => {
+app.get('/pedidoporclienteid/:id', async (req, res) => {
     await pedido.findAll({
         include: [{ all: true }]
     },
