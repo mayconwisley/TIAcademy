@@ -258,7 +258,7 @@ app.put('/editarpedido', (req, res) => {
         })
     }).catch((erro) => {
         return res.status(400).json({
-            error: false,
+            error: true,
             message: "Erro ao atualizar"
         })
     })
@@ -274,7 +274,7 @@ app.get('/buscacliente', async (req, res) => {
         return res.json({ pedido })
     }).catch((erro) => {
         return res.status(400).json({
-            error: false,
+            error: true,
             message: "Erro ao atualizar"
         })
     })
@@ -301,7 +301,7 @@ app.put('/editarcliente', (req, res) => {
         })
     }).catch((erro) => {
         return res.status(400).json({
-            error: false,
+            error: true,
             message: "Erro ao atualizar"
         })
     })
@@ -324,7 +324,7 @@ app.put('/editarpedidoput', (req, res) => {
         })
     }).catch((erro) => {
         return res.status(400).json({
-            error: false,
+            error: true,
             message: "Erro ao atualizar"
         })
     })
@@ -358,6 +358,50 @@ app.delete('/apagarcliente/:id', (req, res) => {
         });
     });
 });
+
+/*
+Desafio Aula 04
+Faça uma rota que liste todos os pedidos de um cliente
+*/
+app.get('/pedidoporcliente/:id', async (req, res) => {
+    await pedido.findAll({
+        include: [{ all: true }]
+    },
+        {
+            where: {
+                ClienteId: req.params.id
+            }
+        }).then((pedido) => {
+            return res.json({ pedido })
+        }).catch((erro) => {
+            return res.status(400).json({
+                error: true,
+                message: "Erro ao atualizar"
+            })
+        })
+});
+
+/*
+    Crie uma nova rota que permite alterar esses pedido utilizando o ClienteId
+*/
+app.put('/editarpedidoporcliente', (req, res) => {
+    pedido.update(req.body, {
+        where: {
+            ClienteId: req.body.ClienteId
+        }
+    }).then(() => {
+        return res.json({
+            error: false,
+            message: "Pedido Atualizado"
+        })
+    }).catch((erro) => {
+        return res.status(400).json({
+            error: true,
+            message: "Erro ao atualizar"
+        })
+    })
+});
+
 
 
 let port = process.env.PORT || 3000;
