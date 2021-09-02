@@ -3,22 +3,22 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import { Home } from './pages/Home/';
 
-import { VisualizarCliente } from './pages/Cliente/';
-import { EditarClienteId } from './pages/Cliente/editarClienteId.js';
-import { ExcluirClienteId } from './pages/Cliente/excluirClienteId.js';
+import { VisualizarCliente } from './pages/Cliente/Visualizar/';
+import { EditarClienteId } from './pages/Cliente/Editar/';
+import { ExcluirClienteId } from './pages/Cliente/Excluir/';
 
-import { VisualizarPedido } from './pages/Pedido/';
-import { EditarPedidoId } from './pages/Pedido/editarPedidoId.js';
-import { EditarPedidoClienteId } from './pages/Pedido/editarPedidoClienteId.js';
-import { PedidoPorClienteId } from './pages/Pedido/pedidoPorClienteId.js';
-import { ExcluirPedidoId } from './pages/Pedido/excluirPedidoId.js';
+import { VisualizarPedido } from './pages/Pedido/Visualizar';
+import { EditarPedidoId } from './pages/Pedido/Editar/PedidoId.jsx';
+import { EditarPedidoClienteId } from './pages/Pedido/Editar/PedidoClienteId.jsx';
+import { PedidoPorClienteId } from './pages/Pedido/Visualizar/PorClienteId.jsx';
+import { ExcluirPedidoId } from './pages/Pedido/Excluir/';
 
-import { VisualizarServico } from './pages/Servico';
-import { EditarServicoId } from './pages/Servico/editarServicoId.js';
-import { EditarServicoClienteId } from './pages/Servico/editarServicoClienteId.js';
-import { ExcluirServicoId } from './pages/Servico/excluirServicoId.js';
+import { VisualizarServico } from './pages/Servico/Visualizar';
+import { EditarServicoId } from './pages/Servico/Editar/ServicoId.jsx';
+import { EditarServicoClienteId } from './pages/Servico/Editar/ServicoClienteId.jsx';
+import { ExcluirServicoId } from './pages/Servico/Excluir/';
 
-import { Menu } from './components/Menu/';
+import { Menu } from './components/Menu/index.jsx';
 
 function App() {
   return (
