@@ -3,25 +3,27 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import { Home } from './pages/Home/';
 
-import { VisualizarCliente } from './pages/VisualizarCliente/';
-import { EditarClienteId } from './pages/VisualizarCliente/editarClienteId.js';
-import { ExcluirClienteId } from './pages/VisualizarCliente/excluirClienteId.js';
+import { VisualizarCliente } from './pages/Cliente/';
+import { EditarClienteId } from './pages/Cliente/editarClienteId.js';
+import { ExcluirClienteId } from './pages/Cliente/excluirClienteId.js';
 
-import { VisualizarPedido } from './pages/VisualizarPedido/';
-import { EditarPedidoId } from './pages/VisualizarPedido/editarPedidoId.js';
-import { EditarPedidoClienteId } from './pages/VisualizarPedido/editarPedidoClienteId.js';
-import { PedidoPorClienteId } from './pages/VisualizarPedido/pedidoPorClienteId.js';
-import { ExcluirPedidoId } from './pages/VisualizarPedido/excluirPedidoId.js';
+import { VisualizarPedido } from './pages/Pedido/';
+import { EditarPedidoId } from './pages/Pedido/editarPedidoId.js';
+import { EditarPedidoClienteId } from './pages/Pedido/editarPedidoClienteId.js';
+import { PedidoPorClienteId } from './pages/Pedido/pedidoPorClienteId.js';
+import { ExcluirPedidoId } from './pages/Pedido/excluirPedidoId.js';
 
-import { VisualizarServico } from './pages/VisualizarServico';
-import { EditarServicoId } from './pages/VisualizarServico/editarServicoId.js';
-import { EditarServicoClienteId } from './pages/VisualizarServico/editarServicoClienteId.js';
-import { ExcluirServicoId } from './pages/VisualizarServico/excluirServicoId.js';
+import { VisualizarServico } from './pages/Servico';
+import { EditarServicoId } from './pages/Servico/editarServicoId.js';
+import { EditarServicoClienteId } from './pages/Servico/editarServicoClienteId.js';
+import { ExcluirServicoId } from './pages/Servico/excluirServicoId.js';
 
+import { Menu } from './components/Menu/';
 
 function App() {
   return (
     <div>
+      <Menu />
       <Router>
         <Switch>
           <Route exact path="/" component={Home} />

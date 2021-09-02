@@ -1,7 +1,7 @@
 export const ExcluirPedidoId = () => {
     return (
         <div>
-            <h1>Exccluir Pedido Id</h1>
+            <h1>Excluir Pedido Id</h1>
 
         </div>
     )
