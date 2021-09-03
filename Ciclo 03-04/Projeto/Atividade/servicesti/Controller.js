@@ -97,7 +97,7 @@ app.post('/servicos', async (req, res) => {
 //Lista Serviços por ordem de nomes
 app.get('/listaservicos', async (req, res) => {
     await servico.findAll({
-        order: [['nome', 'DESC']]
+        order: [['nome', 'ASC']]
     }).then((servicos) => {
         res.json({
             servicos
@@ -431,7 +431,7 @@ app.put('/editarpedidoporcliente', (req, res) => {
 
 
 
-let port = process.env.PORT || 3000;
+let port = process.env.PORT || 3001;
 
 app.listen(port, (req, res) => {
     console.log('Servidor ok');

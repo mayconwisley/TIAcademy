@@ -1,0 +1,558 @@
+{
+	"info": {
+		"_postman_id": "96526192-308e-4835-9ca9-263f41b55923",
+		"name": "Modulo03",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "servicos",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nome\":\"Ruby\",\r\n    \"descricao\":\"Linguagem de programação\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/servicos",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"servicos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "cliente",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nome\": \"Serafim do Pinto\",\r\n    \"endereco\": \"Rua dos magos, 25\",\r\n    \"cidade\": \"Maringá\",\r\n    \"uf\": \"PR\",\r\n    \"nascimento\": \"1992-05-20\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/cliente",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"cliente"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "pedido",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"ClienteId\": 3,\r\n    \"ServicoId\": 2,\r\n    \"valor\": 4.20,\r\n    \"data\": \"2021-08-31\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/pedido",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"pedido"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "listaServicos",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/listaservicos",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"listaservicos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "listaclientes",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/listaclientes",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"listaclientes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "listaclientesAntigo",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/listaclientesAntigo",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"listaclientesAntigo"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "totalcliente",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/totalcliente",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"totalcliente"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "todospedidos",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/todospedidos",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"todospedidos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "listapedidosCrescente",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/listapedidosCrescente",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"listapedidosCrescente"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "totalpedidos",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/totalpedidos",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"totalpedidos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "totalservicos",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/totalservicos",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"totalservicos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "servicoporId",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/servico/2",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"servico",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SomaValorPedidoPorId",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/pedido/6",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"pedido",
+						"6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SomaValorPedidoPorId Op",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/pedidoop/6",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"pedidoop",
+						"6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "atualizaservicoId",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/atualizaservico/6",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"atualizaservico",
+						"6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "editarservicoIdBody",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/editarservico",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"editarservico"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "servicopedidosId",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/servicopedidos/2",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"servicopedidos",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "editarpedidoSevicoIdBody",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/editarpedido",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"editarpedido"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "buscaPedidoClienteIdBody",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/buscapedidoporcliente",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"buscapedidoporcliente"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "consultaClienteId",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/consultaClienteId/6",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"consultaClienteId",
+						"6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "editarclienteIdBody",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/editarcliente",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"editarcliente"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "atualizarpedidoIdBody",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/atualizarpedido",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"atualizarpedido"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "excluirclienteIdBody",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/excluircliente",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"excluircliente"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "apagarclienteid",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/apagarclienteid/9",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"apagarclienteid",
+						"9"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "pedidoporclienteid",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/pedidoporclienteid/6",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"pedidoporclienteid",
+						"6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "editarpedidoporclienteIdBody",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/editarpedidoporcliente",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"editarpedidoporcliente"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

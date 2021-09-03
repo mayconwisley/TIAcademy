@@ -1,9 +1,47 @@
-import { Container, Table } from "reactstrap"
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { Alert, Container, Table } from "reactstrap"
+import { api } from '../../../config';
 
 export const VisualizarServico = () => {
+
+    const [data, setData] = useState([]);
+    const [status, setStatus] = useState({
+        type: "",
+        messege: ""
+    });
+
+    const getServico = async () => {
+        await axios.get(`${api}/listaservicos`)
+            .then((response) => {
+                console.log(response.data.servicos);
+                setData(response.data.servicos);
+            })
+            .catch(() => {
+                console.log("Erro: não foi possivel conectar a API");
+
+                setStatus({
+                    type: "Error",
+                    message: "Erro: não foi possivel conectar a API"
+                });
+            });
+    }
+
+    useEffect(() => {
+        getServico();
+    }, []);
+
+
     return (
         <div>
             <Container>
+                {status.type === "Error" ?
+                    <Alert color="danger">
+                        {status.messege}
+                    </Alert> :
+                    ""
+                }
                 <Table striped hover>
                     <thead>
                         <tr>
@@ -14,24 +52,18 @@ export const VisualizarServico = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td>Larry</td>
-                            <td>the Bird</td>
-                            <td>@twitter</td>
-                        </tr>
+                        {data.map(item => (
+                            <tr key={item.id} >
+                                <td>{item.id}</td>
+                                <td>{item.nome}</td>
+                                <td>{item.descricao}</td>
+                                <td className="text-center">
+                                    <Link to={`visualizarservicoid/${item.id}`}
+                                        className="btn btn-outline-primary btn-sm"> Consultar
+                                    </Link>
+                                </td>
+                            </tr>
+                        ))}
                     </tbody>
                 </Table>
             </Container>
