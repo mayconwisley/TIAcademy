@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Home } from './pages/Home/';
 
 import { VisualizarCliente } from './pages/Cliente/Visualizar/';
+import { VisualizarClienteId } from './pages/Cliente/Visualizar/ClienteId.jsx';
 import { EditarClienteId } from './pages/Cliente/Editar/';
 import { ExcluirClienteId } from './pages/Cliente/Excluir/';
 
@@ -29,6 +30,7 @@ function App() {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route path="/visualizarcliente" component={VisualizarCliente} />
+          <Route path="/visualizarclienteId/:id" component={VisualizarClienteId} />
           <Route path="/editarclienteid" component={EditarClienteId} />
           <Route path="/excluirclienteid" component={ExcluirClienteId} />
 

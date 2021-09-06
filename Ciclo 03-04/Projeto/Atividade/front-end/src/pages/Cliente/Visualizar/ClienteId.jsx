@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { Alert, Container, Table } from "reactstrap"
 import { api } from '../../../config';
 
-export const VisualizarServicoId = (props) => {
+export const VisualizarClienteId = (props) => {
     console.log(1);
 
     const [data, setData] = useState([]);
@@ -16,13 +16,13 @@ export const VisualizarServicoId = (props) => {
     });
 
     useEffect(() => {
-        const getServico = async () => {
-            await axios.get(`${api}/servico/${id}`)
+        const getClienteId = async () => {
+            await axios.get(`${api}/consultaClienteId/${id}`)
                 .then((response) => {
-                    console.log(`${api}/servico/${id}`);
-                    console.log(response.data.servicos);
+                    console.log(`${api}/consultaClienteId/${id}`);
+                    console.log(response.data.cliente);
                     //setId(response.id.servicos);
-                    setData(response.data.servicos);
+                    setData(response.data.cliente);
                 })
                 .catch(() => {
                     console.log("Erro: não foi possivel conectar a API");
@@ -33,7 +33,7 @@ export const VisualizarServicoId = (props) => {
                     });
                 });
         }
-        getServico();
+        getClienteId();
     }, [id]);
 
 
@@ -47,7 +47,7 @@ export const VisualizarServicoId = (props) => {
                         </Alert> :
                         ""
                 }
-              {/*   <div className="d-flex">
+                {/*   <div className="d-flex">
                     <div className="mr-auto p-2">
                         <h1>Informações do Serviço</h1>
                     </div>
@@ -72,8 +72,11 @@ export const VisualizarServicoId = (props) => {
                 <Table striped hover>
                     <thead>
                         <tr>
-                            <th>Serviço</th>
-                            <th>Descrição</th>
+                            <th>Nome</th>
+                            <th>Endereço</th>
+                            <th>cidade</th>
+                            <th>UF</th>
+                            <th>Nascimento</th>
                             <th>Ações</th>
                         </tr>
                     </thead>
@@ -81,9 +84,12 @@ export const VisualizarServicoId = (props) => {
 
                         <tr key={data.id} >
                             <td>{data.nome}</td>
-                            <td>{data.descricao}</td>
+                            <td>{data.endereco}</td>
+                            <td>{data.cidade}</td>
+                            <td>{data.uf}</td>
+                            <td>{data.nascimento}</td>
                             <td className="text-center">
-                                <Link to={`/visualizarservico`}
+                                <Link to={`/VisualizarCliente`}
                                     className="btn btn-outline-primary btn-sm"> Voltar
                                 </Link>
                             </td>

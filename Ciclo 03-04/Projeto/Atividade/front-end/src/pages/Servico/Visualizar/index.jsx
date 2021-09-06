@@ -61,6 +61,12 @@ export const VisualizarServico = () => {
                                     <Link to={`visualizarservicoid/${item.id}`}
                                         className="btn btn-outline-primary btn-sm"> Consultar
                                     </Link>
+                                    <Link to={`visualizarservicoid/${item.id}`}
+                                        className="btn btn-outline-primary btn-sm"> Editar
+                                    </Link>
+                                    <Link to={`visualizarservicoid/${item.id}`}
+                                        className="btn btn-outline-danger btn-sm"> Excluir
+                                    </Link>
                                 </td>
                             </tr>
                         ))}
