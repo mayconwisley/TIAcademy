@@ -47,28 +47,7 @@ export const VisualizarServicoId = (props) => {
                         </Alert> :
                         ""
                 }
-              {/*   <div className="d-flex">
-                    <div className="mr-auto p-2">
-                        <h1>Informações do Serviço</h1>
-                    </div>
-                    <div className="p-2">
-                    <Link to={`/visualizarservico`}
-                        className="btn btn-outline-primary btn-sm"> Voltar
-                    </Link>
-                </div>
-
-                </div>
-                
-                <dl className="row">
-
-                    <dt className="col-sm-3">Nome</dt>
-                    <dt className="col-sm-9">{data.nome}</dt>
-                </dl>
-                <dl className="row">
-
-                    <dt className="col-sm-3">Descrição</dt>
-                    <dt className="col-sm-9">{data.descricao}</dt>
-                </dl> */}
+            
                 <Table striped hover>
                     <thead>
                         <tr>

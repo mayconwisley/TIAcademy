@@ -147,6 +147,33 @@ app.get('/todospedidos', async (req, res) => {
     });
 });
 
+app.get('/todospedidosCliente', async (req, res) => {
+    await pedido.findAll({
+        include :[{
+            all: true
+        }]
+    }).then((pedido) => {
+        res.json({
+            pedido
+        })
+    });
+});
+
+app.get('/todospedidosCliente/:id', async (req, res) => {
+    await pedido.findAll({
+       where :{
+
+       },
+        include :[{
+            all: true
+        }]
+    }).then((pedido) => {
+        res.json({
+            pedido
+        })
+    });
+});
+
 //Todos Pedidos Crescente - Ok
 app.get('/listapedidosCrescente', async (req, res) => {
     await pedido.findAll({
@@ -194,11 +221,15 @@ app.get('/servico/:id', async (req, res) => {
     Qual é o total que o cliente X gastou na ServicesTI
 */
 //Total de pedido Gasto por Cliente
-app.get('/pedido/:id', async (req, res) => {
-    await pedido.sum('valor', {
+app.get('/pedidoId/:id', async (req, res) => {
+    await pedido.findAll({
         where: {
-            ClienteId: req.params.id
-        }
+            Id: req.params.id
+        },
+        
+        include :[{
+            all: true
+        }]
     }).then((pedido) => {
         return res.json({
             pedido
