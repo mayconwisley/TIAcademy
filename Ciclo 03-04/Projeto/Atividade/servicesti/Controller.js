@@ -3,6 +3,7 @@ const cors = require('cors');
 const { Op } = require('sequelize');
 
 const models = require('./models');
+const { sequelize } = require('./models');
 
 const app = express();
 app.use(cors());
@@ -77,10 +78,26 @@ app.post('/cliente', async (req, res) => {
 
 //Cadastrando serviço com as informações enviadas pelo body
 app.post('/servicos', async (req, res) => {
-    let create = await servico.create(
+    
+    
+   
+    function aguardar(ms) {
+        return new Promise((resolve) => {
+            setTimeout(resolve.ms)
+        });
+    };
+
+   await servico.create(
         req.body
-    );
-    res.send('Serviço foi inserido');
+    ).then(()=>{
+       return res.json({
+            error: false,
+            message : 'Serviço foi inserido'
+        })
+    });
+
+    await aguardar(3000);
+    //res.send('Serviço foi inserido');
 });
 
 //Listando os Serviços de modo geral.
@@ -151,6 +168,7 @@ app.get('/todospedidosCliente', async (req, res) => {
     await pedido.findAll({
         include: [{
             all: true
+
         }]
     }).then((pedido) => {
         res.json({

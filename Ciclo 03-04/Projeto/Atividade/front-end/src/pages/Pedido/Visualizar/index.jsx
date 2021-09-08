@@ -67,10 +67,10 @@ export const VisualizarPedido = () => {
                                 <td>{item.data}</td>
                                 <td className="text-center">
                                     <Link to={`VisualizarPedidoClienteId/${item.ClienteId}`}
-                                        className="btn btn-outline-primary btn-sm"> Consultar Cliente
+                                        className="btn btn-outline-primary btn-sm"> Cons. Cliente
                                     </Link>
                                     <Link to={`VisualizarPedidoServicoId/${item.ServicoId}`}
-                                        className="btn btn-outline-primary btn-sm"> Consultar Serviço
+                                        className="btn btn-outline-primary btn-sm"> Cons. Serviço
                                     </Link>
                                     <Link to={`VisualizarPedidoClienteId/${item.id}`}
                                         className="btn btn-outline-primary btn-sm"> Editar

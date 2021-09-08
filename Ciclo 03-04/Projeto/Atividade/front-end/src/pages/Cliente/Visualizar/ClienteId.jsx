@@ -8,7 +8,7 @@ export const VisualizarClienteId = (props) => {
     console.log(1);
 
     const [data, setData] = useState([]);
-    const [id, setId] = useState(props.match.params.id);
+    const [id] = useState(props.match.params.id);
 
     const [status, setStatus] = useState({
         type: "",

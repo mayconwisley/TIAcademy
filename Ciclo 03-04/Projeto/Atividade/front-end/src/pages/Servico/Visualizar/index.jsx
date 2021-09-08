@@ -42,6 +42,18 @@ export const VisualizarServico = () => {
                     </Alert> :
                     ""
                 }
+                <div className="d-flex">
+                    <div className="mr-auto p-2">
+                        <h1>Informações do Serviço</h1>
+                    </div>
+                    <div className="p-2">
+                        <Link to={`/CadastrarServico`}
+                            className="btn btn-outline-primary btn-sm"> Cadastrar
+                        </Link>
+                    </div>
+
+                </div>
+
                 <Table striped hover>
                     <thead>
                         <tr>

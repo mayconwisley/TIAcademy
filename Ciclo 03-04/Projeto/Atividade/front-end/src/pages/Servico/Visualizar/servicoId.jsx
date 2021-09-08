@@ -8,7 +8,7 @@ export const VisualizarServicoId = (props) => {
     console.log(1);
 
     const [data, setData] = useState([]);
-    const [id, setId] = useState(props.match.params.id);
+    const [id] = useState(props.match.params.id);
 
     const [status, setStatus] = useState({
         type: "",
@@ -47,8 +47,31 @@ export const VisualizarServicoId = (props) => {
                         </Alert> :
                         ""
                 }
-            
-                <Table striped hover>
+                <div className="d-flex">
+                    <div className="mr-auto p-2">
+                        <h1>Informações do Serviço</h1>
+                    </div>
+                    <div className="p-2">
+                        <Link to={`/visualizarservico`}
+                            className="btn btn-outline-primary btn-sm"> Voltar
+                        </Link>
+                    </div>
+
+                </div>
+
+                <dl className="row">
+
+                    <dt className="col-sm-3">Nome</dt>
+                    <dd className="col-sm-9">{data.nome}</dd>
+                </dl>
+                <dl className="row">
+
+                    <dt className="col-sm-3">Descrição</dt>
+                    <dd className="col-sm-9">{data.descricao}</dd>
+                </dl>
+
+
+                <Table sdriped hover>
                     <thead>
                         <tr>
                             <th>Serviço</th>

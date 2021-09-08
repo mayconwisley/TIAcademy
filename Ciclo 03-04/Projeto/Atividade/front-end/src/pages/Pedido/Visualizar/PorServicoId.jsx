@@ -5,9 +5,9 @@ import { Alert, Container, Table } from "reactstrap"
 import { api } from '../../../config';
 
 export const VisualizarPedidoServicoId = (props) => {
-    
+
     const [data, setData] = useState([]);
-    const [id, setId] = useState(props.match.params.id);
+    const [id] = useState(props.match.params.id);
 
     const [status, setStatus] = useState({
         type: "",
@@ -46,7 +46,7 @@ export const VisualizarPedidoServicoId = (props) => {
                         </Alert> :
                         ""
                 }
-                
+         
                 <Table striped hover>
                     <thead>
                         <tr>

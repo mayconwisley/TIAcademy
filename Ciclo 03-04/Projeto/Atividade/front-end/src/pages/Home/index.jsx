@@ -14,6 +14,9 @@ export const Home = () => {
                     <div className="p-2">
                         <a href="/visualizarServico" className="btn btn-outline-primary btn-sm">Serviço</a>
                     </div>
+                    <div className="p-2">
+                        <a href="/visualizarPedido" className="btn btn-outline-primary btn-sm">Pedido</a>
+                    </div>
                 </div>
             </Container>
         </div>

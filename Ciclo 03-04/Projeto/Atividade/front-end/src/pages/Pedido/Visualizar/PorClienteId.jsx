@@ -7,7 +7,7 @@ import { api } from '../../../config';
 export const VisualizarPedidoClienteId = (props) => {
 
     const [data, setData] = useState([]);
-    const [id, setId] = useState(props.match.params.id);
+    const [id] = useState(props.match.params.id);
 
     const [status, setStatus] = useState({
         type: "",
