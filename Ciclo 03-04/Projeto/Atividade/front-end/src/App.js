@@ -10,6 +10,7 @@ import { ExcluirClienteId } from './pages/Cliente/Excluir/';
 
 import { VisualizarPedido } from './pages/Pedido/Visualizar';
 import { VisualizarPedidoClienteId } from './pages/Pedido/Visualizar/PorClienteId.jsx';
+import { VisualizarPedidoServicoId } from './pages/Pedido/Visualizar/PorServicoId.jsx';
 import { EditarPedidoId } from './pages/Pedido/Editar/PedidoId.jsx';
 import { PedidoPorClienteId } from './pages/Pedido/Visualizar/PorClienteId.jsx';
 import { ExcluirPedidoId } from './pages/Pedido/Excluir/';
@@ -35,7 +36,8 @@ function App() {
           <Route path="/excluirclienteid" component={ExcluirClienteId} />
 
           <Route path="/visualizarpedido" component={VisualizarPedido} />
-          <Route path="/visualizarPedidoclienteid/:id" component={VisualizarPedidoClienteId} />
+          <Route path="/visualizarpedidoclienteid/:id" component={VisualizarPedidoClienteId} />
+          <Route path="/visualizarpedidoservicoid/:id" component={VisualizarPedidoServicoId} />
           <Route path="/editarpedidoid" component={EditarPedidoId} />
           {/* <Route path="/pedidoporclienteid" component={PedidoPorClienteId} /> */}
           <Route path="/excluirpedidoid" component={ExcluirPedidoId} />

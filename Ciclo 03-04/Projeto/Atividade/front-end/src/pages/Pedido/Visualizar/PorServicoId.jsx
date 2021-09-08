@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 import { Alert, Container, Table } from "reactstrap"
 import { api } from '../../../config';
 
-export const VisualizarPedidoClienteId = (props) => {
-
+export const VisualizarPedidoServicoId = (props) => {
+    
     const [data, setData] = useState([]);
     const [id, setId] = useState(props.match.params.id);
 
@@ -15,10 +15,10 @@ export const VisualizarPedidoClienteId = (props) => {
     });
 
     useEffect(() => {
-        const getPedidoClienteId = async () => {
-            await axios.get(`${api}/pedidoporclienteid/${id}`)
+        const getPedidoServicoId = async () => {
+            await axios.get(`${api}/pedidoporservicoid/${id}`)
                 .then((response) => {
-                    console.log(`${api}/pedidoporclienteid/${id}`);
+                    console.log(`${api}/pedidoporservicoid/${id}`);
                     console.log(response.data.pedido);
                     //setId(response.id.servicos);
                     setData(response.data.pedido);
@@ -32,7 +32,7 @@ export const VisualizarPedidoClienteId = (props) => {
                     });
                 });
         }
-        getPedidoClienteId();
+        getPedidoServicoId();
     }, [id]);
 
 
@@ -46,7 +46,7 @@ export const VisualizarPedidoClienteId = (props) => {
                         </Alert> :
                         ""
                 }
-
+                
                 <Table striped hover>
                     <thead>
                         <tr>

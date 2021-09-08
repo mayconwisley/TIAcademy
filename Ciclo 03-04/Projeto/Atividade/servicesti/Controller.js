@@ -149,7 +149,7 @@ app.get('/todospedidos', async (req, res) => {
 
 app.get('/todospedidosCliente', async (req, res) => {
     await pedido.findAll({
-        include :[{
+        include: [{
             all: true
         }]
     }).then((pedido) => {
@@ -161,10 +161,10 @@ app.get('/todospedidosCliente', async (req, res) => {
 
 app.get('/todospedidosCliente/:id', async (req, res) => {
     await pedido.findAll({
-       where :{
+        where: {
 
-       },
-        include :[{
+        },
+        include: [{
             all: true
         }]
     }).then((pedido) => {
@@ -226,8 +226,8 @@ app.get('/pedidoId/:id', async (req, res) => {
         where: {
             Id: req.params.id
         },
-        
-        include :[{
+
+        include: [{
             all: true
         }]
     }).then((pedido) => {
@@ -422,21 +422,39 @@ Desafio Aula 04
 Faça uma rota que liste todos os pedidos de um cliente
 */
 app.get('/pedidoporclienteid/:id', async (req, res) => {
-    await pedido.findAll({
-        include: [{ all: true }]
-    },
+    await pedido.findAll(
         {
             where: {
                 ClienteId: req.params.id
-            }
-        }).then((pedido) => {
-            return res.json({ pedido })
-        }).catch((erro) => {
-            return res.status(400).json({
-                error: true,
-                message: "Erro ao atualizar"
-            })
+            },
+            include: [{ all: true }]
+        }
+    ).then((pedido) => {
+        return res.json({ pedido })
+    }).catch((erro) => {
+        return res.status(400).json({
+            error: true,
+            message: "Erro ao atualizar"
         })
+    })
+});
+
+app.get('/pedidoporservicoid/:id', async (req, res) => {
+    await pedido.findAll(
+        {
+            where: {
+                ServicoId: req.params.id
+            },
+            include: [{ all: true }]
+        }
+    ).then((pedido) => {
+        return res.json({ pedido })
+    }).catch((erro) => {
+        return res.status(400).json({
+            error: true,
+            message: "Erro ao atualizar"
+        })
+    })
 });
 
 /*
