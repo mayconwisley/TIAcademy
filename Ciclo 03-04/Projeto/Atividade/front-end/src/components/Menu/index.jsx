@@ -41,12 +41,6 @@ export const Menu = (props) => {
                                     <DropdownItem>
                                         <NavLink href="/visualizarcliente">Visualizar Cliente</NavLink>
                                     </DropdownItem>
-                                    <DropdownItem>
-                                        <NavLink href="/editarclienteid">Editar Cliente</NavLink>
-                                    </DropdownItem>
-                                    <DropdownItem>
-                                        <NavLink href="/excluirclienteid">Excluir Cliente</NavLink>
-                                    </DropdownItem>
                                 </DropdownMenu>
                             </UncontrolledDropdown>
                             <UncontrolledDropdown nav inNavbar>
@@ -57,16 +51,6 @@ export const Menu = (props) => {
                                     <DropdownItem>
                                         <NavLink href="/visualizarservico">Visualizar Serviço</NavLink>
                                     </DropdownItem>
-                                    <DropdownItem>
-                                        <NavLink href="/editarservicoid">Editar Serviço</NavLink>
-                                    </DropdownItem>
-                                    <DropdownItem>
-                                        <NavLink href="/editarservicoclienteid">Editar Serviço Por Cliente</NavLink>
-                                    </DropdownItem>
-                                    <DropdownItem>
-                                        <NavLink href="/excluirservicoid">Excluir Serviço</NavLink>
-                                    </DropdownItem>
-
                                 </DropdownMenu>
                             </UncontrolledDropdown>
                             <UncontrolledDropdown nav inNavbar>
@@ -77,20 +61,6 @@ export const Menu = (props) => {
                                     <DropdownItem>
                                         <NavLink href="/visualizarpedido">Visualizar Pedido</NavLink>
                                     </DropdownItem>
-                                    <DropdownItem>
-                                        <NavLink href="/pedidoporclienteid">Visualizar Pedido Por Cliente</NavLink>
-                                    </DropdownItem>
-                                    <DropdownItem>
-                                        <NavLink href="/editarpedidoid">Editar Pedido</NavLink>
-                                    </DropdownItem>
-                                    <DropdownItem>
-                                        <NavLink href="/editarpedidoclienteid">Editar Pedido Por Cliente</NavLink>
-                                    </DropdownItem>
-
-                                    <DropdownItem>
-                                        <NavLink href="/excluirpedidoid">Excluir Pedido</NavLink>
-                                    </DropdownItem>
-
                                 </DropdownMenu>
                             </UncontrolledDropdown>
                         </Nav>

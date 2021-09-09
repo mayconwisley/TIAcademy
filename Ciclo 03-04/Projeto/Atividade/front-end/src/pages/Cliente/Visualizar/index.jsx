@@ -5,8 +5,8 @@ import { Alert, Container, Table } from "reactstrap"
 import { api } from '../../../config';
 
 
-export const VisualizarCliente = () =>{
-    
+export const VisualizarCliente = () => {
+
     const [data, setData] = useState([]);
     const [status, setStatus] = useState({
         type: "",
@@ -43,8 +43,20 @@ export const VisualizarCliente = () =>{
                     </Alert> :
                     ""
                 }
-                <Table striped hover>
-                    <thead>
+
+                <div className="d-flex">
+                    <div className="mr-auto p-2">
+                        <h1>Informações do Cliente</h1>
+                    </div>
+                </div>
+                <div className="p-2">
+                    <Link to={`/CadastrarCliente`}
+                        className="btn btn-outline-primary btn-sm"> Cadastrar
+                    </Link>
+                </div>
+                <hr className="m-1" />
+                <Table striped hover bordered>
+                    <thead className="text-center">
                         <tr>
                             <th>Id</th>
                             <th>Nome</th>
@@ -68,13 +80,6 @@ export const VisualizarCliente = () =>{
                                     <Link to={`visualizarclienteId/${item.id}`}
                                         className="btn btn-outline-primary btn-sm"> Consultar
                                     </Link>
-                                    <Link to={`visualizarclienteId/${item.id}`}
-                                        className="btn btn-outline-primary btn-sm"> Editar
-                                    </Link>
-                                    
-                                    <Link to={`visualizarclienteId/${item.id}`}
-                                    className="btn btn-outline-danger btn-sm"> Excluir
-                                </Link>
                                 </td>
                             </tr>
                         ))}

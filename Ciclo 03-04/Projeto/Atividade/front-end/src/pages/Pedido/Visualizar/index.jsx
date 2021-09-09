@@ -42,6 +42,18 @@ export const VisualizarPedido = () => {
                     </Alert> :
                     ""
                 }
+
+                <div className="d-flex">
+                    <div className="mr-auto p-2">
+                        <h1>Informações do Pedido</h1>
+                    </div>
+                </div>
+                <div className="p-2">
+                    <Link to={`/CadastrarPedido`}
+                        className="btn btn-outline-primary btn-sm"> Cadastrar
+                    </Link>
+                </div>
+                <hr className="m-1" />
                 <Table striped hover>
                     <thead>
                         <tr>

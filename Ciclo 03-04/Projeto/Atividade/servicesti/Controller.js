@@ -69,30 +69,73 @@ app.post('/pedido', async (req, res) => {
     
  */
 //Cadastrando cliente com as informações enviadas pelo body
-app.post('/cliente', async (req, res) => {
-    let create = await cliente.create(
+app.post('/adicionarcliente', async (req, res) => {
+    function aguardar(ms) {
+        return new Promise((resolve) => {
+            setTimeout(resolve.ms)
+        });
+    };
+   
+    await cliente.create(
         req.body
-    );
-    res.send('Cliente foi inserido');
+    ).then(() => {
+        return res.json({
+            error: false,
+            message: 'Cliente foi inserido'
+        })
+    });
+
+    await aguardar(3000);
+
 });
+
+//Excluindo Cliente
+app.delete('/apagarclienteid/:id', (req, res) => {
+    cliente.destroy({
+        where: {
+            id: req.params.id
+        }
+    }).then(() => {
+        return res.json({
+            error: false,
+            message: "Cliente excluido"
+        });
+    }).catch((erro) => {
+        return res.status(400).json({
+            error: true,
+            message: "Erro ao excluir cliente"
+        });
+    });
+});
+
+app.get('/excluircliente/:id', (req, res) => {
+    cliente.destroy({
+        where: {
+            id: req.params.id
+        }
+    }).then(() => {
+        return req.json({ cliente });
+    })
+});
+
 
 //Cadastrando serviço com as informações enviadas pelo body
 app.post('/servicos', async (req, res) => {
-    
-    
-   
+
+
+
     function aguardar(ms) {
         return new Promise((resolve) => {
             setTimeout(resolve.ms)
         });
     };
 
-   await servico.create(
+    await servico.create(
         req.body
-    ).then(()=>{
-       return res.json({
+    ).then(() => {
+        return res.json({
             error: false,
-            message : 'Serviço foi inserido'
+            message: 'Serviço foi inserido'
         })
     });
 
@@ -407,17 +450,8 @@ app.put('/atualizarpedido', (req, res) => {
 });
 //////////////////////////////////////////////////////
 
-app.get('/excluircliente', (req, res) => {
-    cliente.destroy({
-        where: {
-            id: req.body.id
-        }
-    }).then(() => {
-        return req.json({ cliente });
-    })
-});
 
-app.delete('/apagarclienteid/:id', (req, res) => {
+/* app.delete('/apagarclienteid/:id', (req, res) => {
     cliente.destroy({
         where: {
             id: req.params.id
@@ -434,7 +468,7 @@ app.delete('/apagarclienteid/:id', (req, res) => {
         });
     });
 });
-
+ */
 /*
 Desafio Aula 04
 Faça uma rota que liste todos os pedidos de um cliente

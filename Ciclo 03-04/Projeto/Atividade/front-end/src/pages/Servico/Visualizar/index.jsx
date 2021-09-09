@@ -46,16 +46,15 @@ export const VisualizarServico = () => {
                     <div className="mr-auto p-2">
                         <h1>Informações do Serviço</h1>
                     </div>
-                    <div className="p-2">
-                        <Link to={`/CadastrarServico`}
-                            className="btn btn-outline-primary btn-sm"> Cadastrar
-                        </Link>
-                    </div>
-
                 </div>
-
-                <Table striped hover>
-                    <thead>
+                <div className="p-2">
+                    <Link to={`/CadastrarPedido`}
+                        className="btn btn-outline-primary btn-sm"> Cadastrar
+                    </Link>
+                </div>
+                <hr className="m-1" />
+                <Table striped hover bordered>
+                    <thead className="text-center">
                         <tr>
                             <th>Id</th>
                             <th>Serviço</th>
@@ -72,12 +71,6 @@ export const VisualizarServico = () => {
                                 <td className="text-center">
                                     <Link to={`visualizarservicoid/${item.id}`}
                                         className="btn btn-outline-primary btn-sm"> Consultar
-                                    </Link>
-                                    <Link to={`visualizarservicoid/${item.id}`}
-                                        className="btn btn-outline-primary btn-sm"> Editar
-                                    </Link>
-                                    <Link to={`visualizarservicoid/${item.id}`}
-                                        className="btn btn-outline-danger btn-sm"> Excluir
                                     </Link>
                                 </td>
                             </tr>

@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Alert, Container, Table } from "reactstrap"
+import { Alert, Card, CardBody, CardHeader, CardText, Container, } from "reactstrap"
 import { api } from '../../../config';
 
 export const VisualizarClienteId = (props) => {
@@ -19,14 +19,9 @@ export const VisualizarClienteId = (props) => {
         const getClienteId = async () => {
             await axios.get(`${api}/consultaClienteId/${id}`)
                 .then((response) => {
-                    console.log(`${api}/consultaClienteId/${id}`);
-                    console.log(response.data.cliente);
-                    //setId(response.id.servicos);
                     setData(response.data.cliente);
                 })
                 .catch(() => {
-                    console.log("Erro: não foi possivel conectar a API");
-
                     setStatus({
                         type: "Error",
                         message: "Erro: não foi possivel conectar a API"
@@ -35,7 +30,6 @@ export const VisualizarClienteId = (props) => {
         }
         getClienteId();
     }, [id]);
-
 
     return (
         <div>
@@ -47,58 +41,51 @@ export const VisualizarClienteId = (props) => {
                         </Alert> :
                         ""
                 }
-                {/*   <div className="d-flex">
+
+                <div className="d-flex">
                     <div className="mr-auto p-2">
-                        <h1>Informações do Serviço</h1>
+                        <h1>Informações do Cliente</h1>
                     </div>
-                    <div className="p-2">
-                    <Link to={`/visualizarservico`}
+                </div>
+                <div className="p-2">
+                    <Link to={`/VisualizarCliente`}
                         className="btn btn-outline-primary btn-sm"> Voltar
                     </Link>
                 </div>
-
+                <div>
+                    <Card>
+                        <CardHeader tag="h2">
+                            {data.id} - {data.nome}
+                        </CardHeader>
+                        <CardBody>
+                            <Card>
+                                <CardHeader tag="h4" >Dados</CardHeader>
+                                <CardBody>
+                                    <CardText>
+                                        {data.endereco} - {data.cidade} - {data.uf}
+                                    </CardText>
+                                </CardBody>
+                            </Card>
+                            <Card>
+                                <CardHeader tag="h4">Nascimento</CardHeader>
+                                <CardBody>
+                                    <CardText>
+                                        {data.nascimento}
+                                    </CardText>
+                                </CardBody>
+                            </Card>
+                        </CardBody>
+                    </Card>
                 </div>
-                
-                <dl className="row">
-
-                    <dt className="col-sm-3">Nome</dt>
-                    <dt className="col-sm-9">{data.nome}</dt>
-                </dl>
-                <dl className="row">
-
-                    <dt className="col-sm-3">Descrição</dt>
-                    <dt className="col-sm-9">{data.descricao}</dt>
-                </dl> */}
-                <Table striped hover>
-                    <thead>
-                        <tr>
-                            <th>Nome</th>
-                            <th>Endereço</th>
-                            <th>cidade</th>
-                            <th>UF</th>
-                            <th>Nascimento</th>
-                            <th>Ações</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-
-                        <tr key={data.id} >
-                            <td>{data.nome}</td>
-                            <td>{data.endereco}</td>
-                            <td>{data.cidade}</td>
-                            <td>{data.uf}</td>
-                            <td>{data.nascimento}</td>
-                            <td className="text-center">
-                                <Link to={`/VisualizarCliente`}
-                                    className="btn btn-outline-primary btn-sm"> Voltar
-                                </Link>
-                            </td>
-                        </tr>
-
-                    </tbody>
-                </Table>
+                <div className="d-Flex p-2">
+                    <Link to={`/VisualizarCliente`}
+                        className="btn btn-outline-primary btn-sm"> Editar
+                    </Link>
+                    <Link to={`/ExcluirClienteId/${data.id}`}
+                        className="btn btn-outline-danger btn-sm"> Excluir
+                    </Link>
+                </div>
             </Container>
-
         </div>
     )
 }
