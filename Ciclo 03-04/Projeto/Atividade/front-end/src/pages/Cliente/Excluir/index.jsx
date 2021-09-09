@@ -1,12 +1,11 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Alert, Card, CardBody, CardHeader, CardText, Container, } from "reactstrap"
+import { Alert, Container } from "reactstrap"
 import { api } from '../../../config';
 
 export const ExcluirClienteId = (props) => {
 
-    const [data, setData] = useState([]);
     const [id] = useState(props.match.params.id);
 
     const [status, setStatus] = useState({
@@ -18,11 +17,11 @@ export const ExcluirClienteId = (props) => {
         const getClienteId = async () => {
             await axios.delete(`${api}/apagarclienteid/${id}`)
                 .then((response) => {
-                    setData(response);
                     setStatus({
                         type: 'Success',
                         message: 'Cliente Excluido'
                     })
+                    
                 })
                 .catch(() => {
                     setStatus({

@@ -20,7 +20,7 @@ import { ExcluirPedidoId } from './pages/Pedido/Excluir/';
 import { VisualizarServico } from './pages/Servico/Visualizar';
 import { VisualizarServicoId } from './pages/Servico/Visualizar/servicoId.jsx';
 import { CadastrarServico } from './pages/Servico/Cadastrar';
-import { EditarServicoId } from './pages/Servico/Editar/ServicoId.jsx';
+import { EditarServico } from './pages/Servico/Editar/';
 import { EditarServicoClienteId } from './pages/Servico/Editar/ServicoClienteId.jsx';
 import { ExcluirServicoId } from './pages/Servico/Excluir/';
 
@@ -43,16 +43,16 @@ function App() {
           <Route path="/visualizarpedidoclienteid/:id" component={VisualizarPedidoClienteId} />
           <Route path="/visualizarpedidoservicoid/:id" component={VisualizarPedidoServicoId} />
           <Route path="/CadastrarPedido" component={CadastrarPedido} />
-          <Route path="/editarpedidoid" component={EditarPedidoId} />
+          <Route path="/editarpedidoid/:id" component={EditarPedidoId} />
           {/* <Route path="/pedidoporclienteid" component={PedidoPorClienteId} /> */}
           <Route path="/excluirpedidoid" component={ExcluirPedidoId} />
 
           <Route path="/visualizarservico" component={VisualizarServico} />
           <Route path="/visualizarservicoid/:id" component={VisualizarServicoId} />
           <Route path="/CadastrarServico" component={CadastrarServico} />
-          <Route path="/editarservicoid" component={EditarServicoId} />
+          <Route path="/editarservicoid/:id" component={EditarServico} />
           <Route path="/editarservicoclienteid" component={EditarServicoClienteId} />
-          <Route path="/excluirservicoid" component={ExcluirServicoId} />
+          <Route path="/excluirservicoid/:id" component={ExcluirServicoId} />
 
 
 

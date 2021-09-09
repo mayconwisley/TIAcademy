@@ -1,8 +1,10 @@
 import { Alert, Button, Col, Container, Form, FormGroup, Input, Label, Row, Spinner } from "reactstrap"
 import { Link } from 'react-router-dom';
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import axios from "axios";
 import { api } from '../../../config';
+
+
 export const CadastrarPedido = () => {
 
     const [pedido, setPedido] = useState({

@@ -72,10 +72,12 @@ app.post('/pedido', async (req, res) => {
 app.post('/adicionarcliente', async (req, res) => {
     function aguardar(ms) {
         return new Promise((resolve) => {
-            setTimeout(resolve.ms)
+            setTimeout(resolve, ms)
         });
     };
-   
+    
+    await aguardar(3000);
+
     await cliente.create(
         req.body
     ).then(() => {
@@ -85,7 +87,7 @@ app.post('/adicionarcliente', async (req, res) => {
         })
     });
 
-    await aguardar(3000);
+    
 
 });
 
@@ -142,6 +144,25 @@ app.post('/servicos', async (req, res) => {
     await aguardar(3000);
     //res.send('Serviço foi inserido');
 });
+
+app.delete('/apagarservicoid/:id', (req, res) => {
+    servico.destroy({
+        where: {
+            id: req.params.id
+        }
+    }).then(() => {
+        return res.json({
+            error: false,
+            message: "Servico excluido"
+        });
+    }).catch((erro) => {
+        return res.status(400).json({
+            error: true,
+            message: "Erro ao excluir cliente"
+        });
+    });
+});
+
 
 //Listando os Serviços de modo geral.
 /* app.get('/listaservicos', async (req, res) => {
@@ -340,12 +361,14 @@ app.put('/editarservico', (req, res) => {
         where: {
             id: req.body.id
         }
-    }).then(() => {
+    })
+    .then(() => {
         return res.json({
             error: false,
             message: "Servico Alterado com Sucesso"
         });
-    }).catch(() => {
+    })
+    .catch(() => {
         return res.status(400).json(
             {
                 error: true,

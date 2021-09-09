@@ -13,19 +13,53 @@ export const VisualizarServicoId = (props) => {
         messege: ""
     });
 
-    useEffect(() => {
-        const getServico = async () => {
-            await axios.get(`${api}/servico/${id}`)
-                .then((response) => {
-                    setData(response.data.servicos);
-                })
-                .catch(() => {
-                    setStatus({
-                        type: "Error",
-                        message: "Erro: não foi possivel conectar a API"
-                    });
-                });
+    const apagarServico = async (id) => {
+        const headers = {
+            'Content-Type': 'application/json'
         }
+        await axios.delete(`${api}/apagarservicoid/${id}`, { headers })
+            .then((response) => {
+                getServico2();
+                setStatus({
+                    type: 'Success',
+                    message: 'response.data.message'
+                })
+            })
+            .catch(() => {
+                setStatus({
+                    type: "Error",
+                    message: "response.data.message"
+                });
+            });
+    }
+    const getServico = async () => {
+        await axios.get(`${api}/servico/${id}`)
+            .then((response) => {
+                setData(response.data.servicos);
+            })
+            .catch(() => {
+                setStatus({
+                    type: "Error",
+                    message: "Erro: não foi possivel conectar a API"
+                });
+            });
+    }
+
+
+    const getServico2 = async () => {
+        await axios.get(`${api}/visualizarservico`)
+            .then((response) => {
+                setData(response.data.servicos);
+            })
+            .catch(() => {
+                setStatus({
+                    type: "Error",
+                    message: "Erro: não foi possivel conectar a API"
+                });
+            });
+    }
+
+    useEffect(() => {
         getServico();
     }, [id]);
     return (
@@ -52,7 +86,7 @@ export const VisualizarServicoId = (props) => {
                 <div>
                     <Card>
                         <CardHeader tag="h5">
-                            {data.nome}
+                            {data.id} - {data.nome}
                         </CardHeader>
                         <CardBody>
                             <CardText>
@@ -62,12 +96,15 @@ export const VisualizarServicoId = (props) => {
                     </Card>
                 </div>
                 <div className="d-Flex p-2">
-                    <Link to={`/visualizarservico`}
+                    <Link to={`/editarservicoid/${data.id}`}
                         className="btn btn-outline-primary btn-sm"> Editar
                     </Link>
-                    <Link to={`/visualizarservico`}
+                    <Link to={`/ExcluirServicoId/${data.id}`}
                         className="btn btn-outline-danger btn-sm"> Excluir
                     </Link>
+                    <span className="btn btn-outline-danger btn-sm" onClick={() => apagarServico(data.id)}>Excluir</span>
+
+
                 </div>
             </Container>
         </div>

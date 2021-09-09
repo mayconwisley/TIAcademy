@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useState } from "react";
 import axios from "axios";
 import { api } from '../../../config';
+import React from 'react';
 export const CadastrarCliente = () => {
 
     const [cliente, setCliente] = useState({
@@ -119,10 +120,10 @@ export const CadastrarCliente = () => {
                         <Input type="date" name="nascimento" onChange={valorInput} placeholder="Data de Nascimento" />
                     </FormGroup>
                     {status.formSave ?
-                        <Button type="submit" outline color="primary" > Cadastrar
-                            <Spinner size="sm" color="secondary" />
+                        <Button type="submit" outline color="primary" desabled > Cadastrar
+                            <Spinner type="grow" size="sm" color="secondary" />
                         </Button> :
-                        <Button type="submit" outline color="primary" > Cadastrar</Button>
+                        <Button type="submit" outline color="primary" > Cadastrar </Button>
                     }
 
                     <Button type="reset" outline color="primary" >Limpar</Button>
