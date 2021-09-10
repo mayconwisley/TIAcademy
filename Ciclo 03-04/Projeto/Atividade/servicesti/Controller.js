@@ -75,7 +75,7 @@ app.post('/adicionarcliente', async (req, res) => {
             setTimeout(resolve, ms)
         });
     };
-    
+
     await aguardar(3000);
 
     await cliente.create(
@@ -86,9 +86,6 @@ app.post('/adicionarcliente', async (req, res) => {
             message: 'Cliente foi inserido'
         })
     });
-
-    
-
 });
 
 //Excluindo Cliente
@@ -123,9 +120,6 @@ app.get('/excluircliente/:id', (req, res) => {
 
 //Cadastrando serviço com as informações enviadas pelo body
 app.post('/servicos', async (req, res) => {
-
-
-
     function aguardar(ms) {
         return new Promise((resolve) => {
             setTimeout(resolve.ms)
@@ -362,20 +356,20 @@ app.put('/editarservico', (req, res) => {
             id: req.body.id
         }
     })
-    .then(() => {
-        return res.json({
-            error: false,
-            message: "Servico Alterado com Sucesso"
-        });
-    })
-    .catch(() => {
-        return res.status(400).json(
-            {
-                error: true,
-                message: "Erro na alteração do serviço"
-
+        .then(() => {
+            return res.json({
+                error: false,
+                message: "Servico Alterado com Sucesso"
             });
-    });
+        })
+        .catch(() => {
+            return res.status(400).json(
+                {
+                    error: true,
+                    message: "Erro na alteração do serviço"
+
+                });
+        });
 });
 
 //Listar todos os serviços por id os dados atrelado a ele
