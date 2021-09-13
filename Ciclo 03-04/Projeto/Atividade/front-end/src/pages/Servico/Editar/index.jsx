@@ -14,7 +14,18 @@ export const EditarServico = (props) => {
         type: '',
         message: ''
     })
-
+   
+    const getServico2 = async () => {
+        await axios.get(`${api}/listaservicos`)
+            .then((response) => {
+                setNome(response.data.servicos.nome);
+                setDescricao(response.data.servicos.descricao)
+            })
+            .catch(() => {
+                console.log("Erro: Não foi possivel conectar a API");
+            })
+    }
+    
 
     const editServico = async e => {
         e.preventDefault();
@@ -22,12 +33,16 @@ export const EditarServico = (props) => {
         const headers = {
             'Content-Type': 'application/json'
         }
+
+       
+
         await axios.put(`${api}/editarservico`, { id, nome, descricao }, { headers })
             .then((response) => {
                 setStatus({
                     type: 'Success',
                     message: 'Editado com Sucesso'
                 })
+                getServico2();
             })
             .catch(() => {
                 setStatus({
@@ -49,6 +64,7 @@ export const EditarServico = (props) => {
                 })
         }
         getServico();
+        
     }, [id])
 
     return (

@@ -6,7 +6,7 @@ import { Home } from './pages/Home/';
 import { VisualizarCliente } from './pages/Cliente/Visualizar/';
 import { VisualizarClienteId } from './pages/Cliente/Visualizar/ClienteId.jsx';
 import { CadastrarCliente } from './pages/Cliente/Cadastrar';
-import { EditarClienteId } from './pages/Cliente/Editar/';
+import { EditarCliente } from './pages/Cliente/Editar/';
 import { ExcluirClienteId } from './pages/Cliente/Excluir/';
 
 import { VisualizarPedido } from './pages/Pedido/Visualizar';
@@ -36,7 +36,7 @@ function App() {
           <Route path="/visualizarcliente" component={VisualizarCliente} />
           <Route path="/visualizarclienteId/:id" component={VisualizarClienteId} />
           <Route path="/CadastrarCliente" component={CadastrarCliente} />
-          <Route path="/editarclienteid" component={EditarClienteId} />
+          <Route path="/editarclienteid/:id" component={EditarCliente} />
           <Route path="/excluirclienteid/:id" component={ExcluirClienteId} />
 
           <Route path="/visualizarpedido" component={VisualizarPedido} />

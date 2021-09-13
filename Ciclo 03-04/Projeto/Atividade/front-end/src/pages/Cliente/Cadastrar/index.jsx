@@ -30,9 +30,6 @@ export const CadastrarCliente = () => {
 
         e.preventDefault();
 
-        setStatus({
-            formSave: true
-        });
 
         const headers = {
             'Content-Type': 'application/json'
@@ -42,14 +39,14 @@ export const CadastrarCliente = () => {
             .then((response) => {
                 if (response.data.error) {
                     setStatus({
-                        formSave: false,
+
                         type: 'Error',
                         message: response.data.message
                     })
                 }
                 else {
                     setStatus({
-                        formSave: false,
+
                         type: 'Success',
                         message: response.data.message
                     })
@@ -58,7 +55,7 @@ export const CadastrarCliente = () => {
             })
             .catch(() => {
                 setStatus({
-                    formSave: false,
+
                     type: 'Error',
                     message: 'Erro: não foi possivel conectar a API'
                 })
@@ -119,12 +116,9 @@ export const CadastrarCliente = () => {
                         <Label>Data Nascimento</Label>
                         <Input type="date" name="nascimento" onChange={valorInput} placeholder="Data de Nascimento" />
                     </FormGroup>
-                    {status.formSave ?
-                        <Button type="submit" outline color="primary" desabled > Cadastrar
-                            <Spinner type="grow" size="sm" color="secondary" />
-                        </Button> :
-                        <Button type="submit" outline color="primary" > Cadastrar </Button>
-                    }
+
+                    <Button type="submit" outline color="primary" > Cadastrar </Button>
+
 
                     <Button type="reset" outline color="primary" >Limpar</Button>
                 </Form>

@@ -1,6 +1,7 @@
-import { Alert, Button, Col, Container, Form, FormGroup, Input, Label, Row, Spinner } from "reactstrap"
+import { Alert, Button, Col, Container, Form, FormGroup, Input, Label, Row, Spinner, Table } from "reactstrap"
 import { Link } from 'react-router-dom';
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import Select from 'react-select';
 import axios from "axios";
 import { api } from '../../../config';
 
@@ -8,14 +9,13 @@ import { api } from '../../../config';
 export const CadastrarPedido = () => {
 
     const [pedido, setPedido] = useState({
-        nome: '',
-        endereco: '',
-        cidade: '',
-        uf: '',
-        nascimento: ''
+        ClienteId: '',
+        ServicoId: '',
+        valor: '',
+        data: ''
     });
     const [status, setStatus] = useState({
-        formSave: false,
+       
         type: '',
         message: ''
     });
@@ -27,26 +27,22 @@ export const CadastrarPedido = () => {
     const CadPedido = async e => {
         e.preventDefault();
 
-        setStatus({
-            formSave: true
-        });
-
         const headers = {
             'Content-Type': 'application/json'
         }
 
-        await axios.post(`${api}/adicionarcliente`, pedido, { headers })
+        await axios.post(`${api}/pedido`, pedido, { headers })
             .then((response) => {
                 if (response.data.error) {
                     setStatus({
-                        formSave: false,
+                      
                         type: 'Error',
                         message: response.data.message
                     })
                 }
                 else {
                     setStatus({
-                        formSave: false,
+                       
                         type: 'Success',
                         message: response.data.message
                     })
@@ -88,50 +84,36 @@ export const CadastrarPedido = () => {
                 }
 
                 <Form className="p-2" onSubmit={CadPedido}>
-                    <FormGroup className="p-2">
-                        <Label>Nome</Label>
-                        <Input type="select" name="select" id="exampleSelect">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-
-                        </Input>
-                    </FormGroup>
-                    <FormGroup className="p-2">
-                        <Label>Serviço</Label>
-                        <Input type="select" name="select" id="exampleSelect">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                        </Input>
-                    </FormGroup>
                     <Row form>
-                        <Col md={5}>
+                        <Col md={2}>
                             <FormGroup className="p-2">
-                                <Label>Valor</Label>
-                                <Input type="text" name="cidade" onChange={valorInput} placeholder="Valor" />
-                            </FormGroup>
-                        </Col>
-                        <Col md={5}>
-                            <FormGroup className="p-2" >
-                                <Label>Data</Label>
-                                <Input type="date" name="data" onChange={valorInput} placeholder="Data de Nascimento" />
+                                <Label>Código Cliente</Label>
+                                <Input type="text" name="ClienteId" onChange={valorInput} placeholder="Código Cliente" />
                             </FormGroup>
                         </Col>
                         <Col md={2}>
+                            <FormGroup className="p-2">
+                                <Label> Códido Serviço</Label>
+                                <Input type="text" name="ServicoId" onChange={valorInput} placeholder="Código Serviço" />
+                            </FormGroup>
                         </Col>
+
+                        <Col md={2}>
+                            <FormGroup className="p-2">
+                                <Label>Valor</Label>
+                                <Input type="text" name="valor" onChange={valorInput} placeholder="Valor" />
+                            </FormGroup>
+                        </Col>
+                        <Col md={2}>
+                            <FormGroup className="p-2" >
+                                <Label>Data</Label>
+                                <Input type="date" name="data" onChange={valorInput} placeholder="Data" />
+                            </FormGroup>
+                        </Col>
+                       
                     </Row>
 
-                    {status.formSave ?
-                        <Button type="submit" outline color="primary" > Cadastrar
-                            <Spinner size="sm" color="secondary" />
-                        </Button> :
-                        <Button type="submit" outline color="primary" > Cadastrar</Button>
-                    }
+                    <Button type="submit" outline color="primary" > Cadastrar</Button>
 
                     <Button type="reset" outline color="primary" >Limpar</Button>
                 </Form>

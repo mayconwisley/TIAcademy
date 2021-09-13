@@ -78,7 +78,7 @@ export const VisualizarClienteId = (props) => {
                     </Card>
                 </div>
                 <div className="d-Flex p-2">
-                    <Link to={`/VisualizarCliente`}
+                    <Link to={`/EditarClienteId/${data.id}`}
                         className="btn btn-outline-primary btn-sm"> Editar
                     </Link>
                     <Link to={`/ExcluirClienteId/${data.id}`}

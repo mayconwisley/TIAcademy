@@ -47,7 +47,7 @@ export const VisualizarServicoId = (props) => {
 
 
     const getServico2 = async () => {
-        await axios.get(`${api}/visualizarservico`)
+        await axios.get(`${api}/listaservicos`)
             .then((response) => {
                 setData(response.data.servicos);
             })
@@ -102,9 +102,6 @@ export const VisualizarServicoId = (props) => {
                     <Link to={`/ExcluirServicoId/${data.id}`}
                         className="btn btn-outline-danger btn-sm"> Excluir
                     </Link>
-                    <span className="btn btn-outline-danger btn-sm" onClick={() => apagarServico(data.id)}>Excluir</span>
-
-
                 </div>
             </Container>
         </div>
