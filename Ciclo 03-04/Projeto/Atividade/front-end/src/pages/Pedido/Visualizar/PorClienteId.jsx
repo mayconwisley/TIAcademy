@@ -46,7 +46,16 @@ export const VisualizarPedidoClienteId = (props) => {
                         </Alert> :
                         ""
                 }
-
+                 <div className="d-flex">
+                    <div className="mr-auto p-2">
+                        <h1>Informações do Pedido</h1>
+                    </div>
+                </div>
+                <div className="p-2">
+                    <Link to={`/VisualizarPedido`}
+                        className="btn btn-outline-primary btn-sm"> Voltar
+                    </Link>
+                </div>
                 <Table striped hover>
                     <thead>
                         <tr>
@@ -57,7 +66,7 @@ export const VisualizarPedidoClienteId = (props) => {
                             <th>Descricao</th>
                             <th>Valor R$</th>
                             <th>Data</th>
-                            <th>Ações</th>
+                           
                         </tr>
                     </thead>
                     <tbody>
@@ -71,17 +80,7 @@ export const VisualizarPedidoClienteId = (props) => {
                                     <td>{item.Servico.descricao}</td>
                                     <td>{item.valor}</td>
                                     <td>{item.data}</td>
-                                    <td className="text-center">
-                                        <Link to={`/visualizarpedido`}
-                                            className="btn btn-outline-primary btn-sm"> Consultar
-                                        </Link>
-                                        <Link to={`/visualizarpedido`}
-                                            className="btn btn-outline-primary btn-sm"> Editar
-                                        </Link>
-                                        <Link to={`/visualizarpedido`}
-                                            className="btn btn-outline-danger btn-sm"> Excluir
-                                        </Link>
-                                    </td>
+                                    
                                 </tr>
                             ))
                         }

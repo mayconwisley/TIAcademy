@@ -63,6 +63,26 @@ app.post('/pedido', async (req, res) => {
     res.send('Pedido foi inserido');
 });
 
+app.delete('/apagarpedidoid/:id', (req, res) => {
+    pedido.destroy({
+        where: {
+            id: req.params.id
+        }
+    }).then(() => {
+        return res.json({
+            error: false,
+            message: "Pedido excluido"
+        });
+    }).catch((erro) => {
+        return res.status(400).json({
+            error: true,
+            message: "Erro ao excluir cliente"
+        });
+    });
+});
+
+
+
 /*
     Desafio aula 02
     Implemente o cadastro de clientes
@@ -371,6 +391,29 @@ app.put('/editarservico', (req, res) => {
                 });
         });
 });
+
+app.put('/editarpedido', (req, res) => {
+    pedido.update(req.body, {
+        where: {
+            id: req.body.id
+        }
+    })
+        .then(() => {
+            return res.json({
+                error: false,
+                message: "Pedido Alterado com Sucesso"
+            });
+        })
+        .catch(() => {
+            return res.status(400).json(
+                {
+                    error: true,
+                    message: "Erro na alteração do serviço"
+
+                });
+        });
+});
+
 
 //Listar todos os serviços por id os dados atrelado a ele
 app.get('/servicopedidos/:id', async (req, res) => {

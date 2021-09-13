@@ -84,10 +84,10 @@ export const VisualizarPedido = () => {
                                     <Link to={`VisualizarPedidoServicoId/${item.ServicoId}`}
                                         className="btn btn-outline-primary btn-sm"> Cons. Serviço
                                     </Link>
-                                    <Link to={`VisualizarPedidoClienteId/${item.id}`}
+                                    <Link to={`editarpedidoid/${item.id}`}
                                         className="btn btn-outline-primary btn-sm"> Editar
                                     </Link>
-                                    <Link to={`VisualizarPedidoClienteId/${item.id}`}
+                                    <Link to={`ExcluirPedidoId/${item.id}`}
                                         className="btn btn-outline-danger btn-sm"> Excluir
                                     </Link>
                                 </td>
